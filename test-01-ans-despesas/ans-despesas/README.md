@@ -1,0 +1,1 @@
+Usei Spring Boot para acelerar a configuração, melhorar organização do código e facilitar testes e execução, sem abrir mão de simplicidade. A aplicação é um job batch, não um servidor web, e o uso do Spring se limita a injeção de dependências, configuração e cliente HTTP.
