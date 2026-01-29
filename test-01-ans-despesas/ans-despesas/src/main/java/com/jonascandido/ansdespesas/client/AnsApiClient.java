@@ -18,21 +18,25 @@ public class AnsApiClient {
     private static final String BASE_URL =
             "https://dadosabertos.ans.gov.br/FTP/PDA/demonstracoes_contabeis/";
 
+    private final HtmlFetcher fetcher;
+
+    public AnsApiClient(HtmlFetcher fetcher) {
+        this.fetcher = fetcher;
+    }
+
     public List<ZipFileInfo> listarZips() {
         try {
             List<ZipFileInfo> resultado = new ArrayList<>();
 
-            Document root = Jsoup.connect(BASE_URL).get();
+            Document root = fetcher.get(BASE_URL);
 
             for (Element link : root.select("a[href]")) {
                 String href = link.attr("href");
 
-                if (!href.matches("\\d{4}/")) {
-                    continue;
-                }
+                if (!href.matches("\\d{4}/")) continue;
 
                 String anoUrl = BASE_URL + href;
-                Document anoDoc = Jsoup.connect(anoUrl).get();
+                Document anoDoc = fetcher.get(anoUrl);
 
                 for (Element zip : anoDoc.select("a[href$=.zip]")) {
                     ZipFileInfo info = criarInfo(zip.attr("href"), anoUrl);
@@ -50,20 +54,13 @@ public class AnsApiClient {
     }
 
     private ZipFileInfo criarInfo(String nomeArquivo, String anoUrl) {
-
         String caminhoCompleto = anoUrl + nomeArquivo;
 
         Trimestre trimestre =
                 TrimestreParser.from(nomeArquivo, caminhoCompleto);
 
-        if (trimestre == null) {
-            return null;
-        }
+        if (trimestre == null) return null;
 
-        return new ZipFileInfo(
-                nomeArquivo,
-                caminhoCompleto,
-                trimestre
-        );
+        return new ZipFileInfo(nomeArquivo, caminhoCompleto, trimestre);
     }
 }
