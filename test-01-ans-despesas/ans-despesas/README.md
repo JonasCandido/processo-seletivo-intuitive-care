@@ -9,3 +9,5 @@ Usei Spring Boot para acelerar a configuração, melhorar organização do códi
 
 1. TESTE DE INTEGRAÇÃO COM API PÚBLICA<br>
 1.1 - A identificação de trimestre e ano é realizada de forma flexível, suportando diferentes padrões históricos de nomenclatura. Arquivos com informações incompletas são considerados apenas quando o período pode ser inferido de forma segura a partir do caminho do arquivo; caso contrário, são ignorados para evitar inconsistências temporais.
+
+1.2 - Optei por processar cada arquivo de cada ZIP individualmente, lendo linha a linha. Esse processamento incremental garante baixo uso de memória, maior resiliência a erros em arquivos individuais, e permite filtrar e normalizar os dados conforme aparecem, sem necessidade de carregar todos os arquivos na memória de uma só vez. Essa abordagem é escalável para arquivos grandes ou múltiplos ZIPs, que poderiam causar problemas de memória se processados de uma vez.
