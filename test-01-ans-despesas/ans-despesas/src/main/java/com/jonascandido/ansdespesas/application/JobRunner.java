@@ -1,4 +1,4 @@
-package com.jonas.ansdespesas.application;
+package com.jonascandido.ansdespesas.application;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
