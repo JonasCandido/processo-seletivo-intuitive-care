@@ -7,4 +7,5 @@ Usei Spring Boot para acelerar a configuração, melhorar organização do códi
 
 ## Observações
 
-1 - A identificação de trimestre e ano é realizada de forma flexível, suportando diferentes padrões históricos de nomenclatura. Arquivos com informações incompletas são considerados apenas quando o período pode ser inferido de forma segura a partir do caminho do arquivo; caso contrário, são ignorados para evitar inconsistências temporais.
+1. TESTE DE INTEGRAÇÃO COM API PÚBLICA
+1.1 - A identificação de trimestre e ano é realizada de forma flexível, suportando diferentes padrões históricos de nomenclatura. Arquivos com informações incompletas são considerados apenas quando o período pode ser inferido de forma segura a partir do caminho do arquivo; caso contrário, são ignorados para evitar inconsistências temporais.
