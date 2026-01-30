@@ -43,3 +43,10 @@ Sobre performance em 1.3: usei cache de CNPJs/razões socias -> Consultas à API
 (Nos meus testes locais na primeira vez o software roda em 2 minutos e 6 segundos e na segunda vez cae para 35 segundos)
 
 OBS: O Consolidator concentra responsabilidades que, em um cenário de longo prazo, poderiam ser extraídas para componentes especializados (parsers, cache, IO). Para este desafio, optei por manter a lógica coesa em uma única classe, priorizando clareza, entrega e testes focados no comportamento final, evitando acoplamento excessivo a detalhes de implementação.
+
+## Iria aplicar com mais tempo: recursos de nuvem (GCP)
+
+O projeto poderia integrar Google Cloud Platform (GCP) para armazenamento e execução do processamento:
+ - Cloud Storage: armazenar arquivos de entrada (downloads/) e saída (temp/) em buckets privados.
+
+ - Cloud Run: rodar o job batch na nuvem, lendo e escrevendo arquivos diretamente nos buckets.
