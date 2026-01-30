@@ -1,4 +1,4 @@
-# Processo Seletivo – Integração e Transformação de Dados (ANS)
+# Processo Seletivo – (ANS)
 
 Este repositório contém projetos independentes, onde dentro de cada um existe um README.md explicando como executar o programa:
 
