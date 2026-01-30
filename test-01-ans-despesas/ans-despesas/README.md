@@ -8,7 +8,7 @@ Usei Spring Boot para acelerar a configuração, melhorar organização do códi
 ## Como rodar o projeto ##
 
 Usei docker compose para facilitar para os avaliadores executar o software.
-Configurei o Dockerfile para rodar os testes e montar a pasta downloads(onde se encontra os arquivos zip baixados) e temp(onde se encontra o consolidado_despesas.csv e seu zip) localmente fora do container.
+Configurei o Dockerfile para rodar os testes(me refiro aos testes em Java feitos na pasta src/test) e montar a pasta downloads(onde se encontra os arquivos zip baixados) e temp(onde se encontra o consolidado_despesas.csv e seu zip) localmente fora do container.
 
 Em um terminal(usei Linux para o exemplo) na pasta ans-despesas, execute:
 ```
@@ -42,4 +42,4 @@ Ordenação e consolidação: Dados agrupados e ordenados por ano → trimestre 
 Sobre performance em 1.3: usei cache de CNPJs/razões socias -> Consultas à API(da ANS que usei para buscar CNPJs/razões socias) são armazenadas localmente, evitando múltiplos acessos e melhorando a performance.
 (Nos meus testes locais na primeira vez o software roda em 2 minutos e 6 segundos e na segunda vez cae para 35 segundos)
 
-OBS: Por causa de tempo, faltou aplicar testes para o Consolidator.java (que possui muitas funcionalidades decidindo priorizar as outras etapas do projeto e voltar aqui se houvesse tempo)
+OBS: O Consolidator concentra responsabilidades que, em um cenário de longo prazo, poderiam ser extraídas para componentes especializados (parsers, cache, IO). Para este desafio, optei por manter a lógica coesa em uma única classe, priorizando clareza, entrega e testes focados no comportamento final, evitando acoplamento excessivo a detalhes de implementação.
