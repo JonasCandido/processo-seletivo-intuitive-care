@@ -1,0 +1,12 @@
+# Data
+consolidado_despesas.csv
+consolidado_validado.csv
+
+# Cache
+__pycache__
+.pytest_cache
+
+# Virtual environment
+.venv/
+venv/
+env/
