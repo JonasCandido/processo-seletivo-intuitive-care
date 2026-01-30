@@ -31,7 +31,7 @@ docker run --rm \
 
 1.3 -
 
-CNPJs duplicados com razões diferentes: Registrados no log; apenas a primeira razão social é usada no CSV. Evita decisões arriscadas sobre qual razão é “correta”.
+Foi implementada uma verificação para detectar múltiplas razões sociais associadas ao mesmo CNPJ.Na prática, como a razão social é obtida exclusivamente pela API oficial da ANS (fonte normalizada),não foram encontrados conflitos reais nos dados processados.A lógica foi mantida para garantir robustez caso a fonte de dados venha a mudar no futuro.
 
 Valores zerados ou negativos: Mantidos no CSV, mas alertados no log. Garante transparência sem mascarar problemas nos dados.
 
