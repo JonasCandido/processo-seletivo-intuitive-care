@@ -58,3 +58,8 @@ O pipeline enriquece o CSV consolidado de despesas com informações cadastrais 
 Para o join, escolhi LEFT JOIN, mantendo todas as despesas do consolidado mesmo que não haja correspondência no cadastro da ANS. Registros sem match aparecem com NaN nas colunas adicionais, garantindo que nenhuma despesa seja perdida.
 
 Essa abordagem é suficiente dado o tamanho dos datasets (~2–5 mil registros) e evita complexidade desnecessária, mantendo o pipeline rápido e fácil de manter.
+
+2.3 - Agregação com múltiplas estratégias
+
+Escolhemos calcular agregações diretamente no pandas em memória.  
+Para datasets pequenos/médios (~2–5 mil linhas), essa abordagem é rápida e simples.

@@ -3,6 +3,8 @@ consolidado_despesas.csv
 consolidado_validado.csv
 operadoras_ativas.csv
 consolidado_enriquecido.csv
+despesas_agregadas.csv 
+Teste_*.zip
 
 # Cache
 __pycache__
