@@ -8,7 +8,7 @@ Usei Spring Boot para acelerar a configuração, melhorar organização do códi
 ## Como rodar o projeto ##
 
 Usei docker compose para facilitar para os avaliadores executar o software.
-Configurei o Dockerfile para rodar os testes e montar a pasta downloads(onde se encontra os arquivos zip baixados) e temp(onde se encontra o consolidado_csv) localmente fora do container.
+Configurei o Dockerfile para rodar os testes e montar a pasta downloads(onde se encontra os arquivos zip baixados) e temp(onde se encontra o consolidado_despesas.csv e seu zip) localmente fora do container.
 
 Em um terminal(usei Linux para o exemplo) na pasta ans-despesas, execute:
 ```
