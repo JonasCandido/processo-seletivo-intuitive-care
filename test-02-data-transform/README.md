@@ -4,6 +4,22 @@ Este projeto realiza validação, enriquecimento e agregação de dados a partir
 
 Utilizei python para acelerar o desenvolvimento dessa etapa para o processo seletivo.
 
+
+## Como rodar o projeto ##
+
+Usei docker para facilitar para os avaliadores executar o software.
+Configurei o Dockerfile para rodar os testes(me refiro aos testes em Python feitos na pasta src/tests) e montar a pasta data(onde se encontra os csvs) e Teste_Jonas.zip localmente fora do container.
+
+Em um terminal(usei Linux para o exemplo) na pasta raiz de test-02-data-transform, execute:
+```
+docker build -t pipeline-test .
+docker run --rm \
+  -v $(pwd)/data:/app/data \
+  -v $(pwd):/app \
+  pipeline-test \
+  python src/pipeline.py
+```
+
 ## Observação
 Este projeto consome como entrada o arquivo consolidado_despesas.csv gerado no Teste 01, mova-o ele para a pasta data de test-02-data-transform.
 
