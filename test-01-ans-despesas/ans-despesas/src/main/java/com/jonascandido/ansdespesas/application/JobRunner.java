@@ -14,6 +14,11 @@ public class JobRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        despesasJob.execute();
+        try {
+            despesasJob.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 }
