@@ -51,3 +51,10 @@ Contras
 - Pode eliminar registros onde a informação poderia ser recuperada externamente
 - Assume que a ausência da Razão Social é um erro irrecuperável no pipeline atual
 
+2.2 - Enriquecimento de Dados com Tratamento de Falhas
+
+O pipeline enriquece o CSV consolidado de despesas com informações cadastrais das operadoras da ANS (RegistroANS, Modalidade e UF) usando o CNPJ como chave.
+
+Para o join, escolhi LEFT JOIN, mantendo todas as despesas do consolidado mesmo que não haja correspondência no cadastro da ANS. Registros sem match aparecem com NaN nas colunas adicionais, garantindo que nenhuma despesa seja perdida.
+
+Essa abordagem é suficiente dado o tamanho dos datasets (~2–5 mil registros) e evita complexidade desnecessária, mantendo o pipeline rápido e fácil de manter.

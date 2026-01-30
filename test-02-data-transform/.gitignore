@@ -1,6 +1,8 @@
 # Data
 consolidado_despesas.csv
 consolidado_validado.csv
+operadoras_ativas.csv
+consolidado_enriquecido.csv
 
 # Cache
 __pycache__

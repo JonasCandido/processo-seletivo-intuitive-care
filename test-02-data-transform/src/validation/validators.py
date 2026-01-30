@@ -1,6 +1,7 @@
 import pandas as pd
 import re
 
+
 def is_valid_cnpj(cnpj) -> bool:
     if pd.isna(cnpj):
         return False
@@ -32,7 +33,7 @@ def validate_data(df: pd.DataFrame) -> pd.DataFrame:
 
     mask_razao = df["RazaoSocial"].notna() & (df["RazaoSocial"].str.strip() != "")
     razao_invalidas = len(df[~mask_razao])
-    df = df[mask_razao]
+    df = df[mask_razao].copy()
 
     df["ValorDespesas"] = (
         df["ValorDespesas"]
@@ -44,7 +45,7 @@ def validate_data(df: pd.DataFrame) -> pd.DataFrame:
 
     mask_valor = df["ValorDespesas"] > 0
     valores_invalidos = len(df[~mask_valor])
-    df = df[mask_valor]
+    df = df[mask_valor].copy()
 
     df["CNPJ_VALIDO"] = df["CNPJ"].apply(is_valid_cnpj)
     cnpjs_invalidos = len(df[~df["CNPJ_VALIDO"]])
