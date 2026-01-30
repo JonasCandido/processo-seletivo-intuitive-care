@@ -79,3 +79,11 @@ Essa abordagem é suficiente dado o tamanho dos datasets (~2–5 mil registros) 
 
 Escolhemos calcular agregações diretamente no pandas em memória.  
 Para datasets pequenos/médios (~2–5 mil linhas), essa abordagem é rápida e simples.
+
+
+## Iria aplicar com mais tempo: recursos de nuvem (GCP)
+
+O projeto poderia integrar Google Cloud Platform (GCP) para armazenamento e execução do processamento:
+ - Cloud Storage: armazenar arquivos de entrada e saída em buckets privados.
+
+ - Cloud Run: rodar o job batch na nuvem, lendo e escrevendo arquivos diretamente nos buckets.
