@@ -14,6 +14,10 @@ def aggregate_data(df: pd.DataFrame) -> pd.DataFrame:
           .reset_index()
     )
 
+    df_agg["TotalDespesas"] = df_agg["TotalDespesas"].round(2)
+    df_agg["MediaTrimestral"] = df_agg["MediaTrimestral"].round(2)
+    df_agg["DesvioPadrao"] = df_agg["DesvioPadrao"].round(2)
+
     df_agg = df_agg.sort_values("TotalDespesas", ascending=False)
 
     return df_agg
