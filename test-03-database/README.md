@@ -52,3 +52,9 @@ Valores inválidos são tratados antes do COPY ou aceitos como NULL quando permi
 ### Despesas acima da média geral 
 #### Justificativa
  - A abordagem com CTEs prioriza legibilidade e manutenção. Alternativas com subqueries correlacionadas foram evitadas por reduzir clareza sem ganho relevante de performance no volume esperado. 
+
+## Iria aplicar com mais tempo: recursos de nuvem (GCP)
+
+Os arquivos CSV gerados na etapa anterior são reutilizados nesta fase como fonte de ingestão do banco de dados.
+Um container executado em Cloud Run é responsável por baixar os arquivos do bucket e executar os scripts SQL de criação de tabelas, carga (\copy) e análises no Cloud SQL (PostgreSQL).
+Essa abordagem manteria os mesmos scripts SQL usados localmente, garantindo reprodutibilidade entre ambientes.
