@@ -1,7 +1,7 @@
 # Teste 03 – Banco de Dados e Análise
 
 Para esta etapa, utiliza-se os CSVs gerados anteriormente: consolidado_despesas.csv, operadoras_ativas.csv e despesas_agregadas.csv(traga-os do projeto 2 para a pasta data aqui(crie uma)).
-Sendo que essa pasta atualmente possui os arquivos para executar os comandos SQL.
+Sendo que esse projeto possui schema.sql e a pasta queries onde se encontram os comandos SQL.
 
 ## Tabelas
 Foram criadas três tabelas normalizadas no PostgreSQL:
@@ -43,3 +43,12 @@ Valores inválidos são tratados antes do COPY ou aceitos como NULL quando permi
  - Rejeitar linhas inválidas evita inconsistências futuras em análises agregadas.
  - Conversão prévia no CSV minimiza erros durante a importação via COPY.
 
+## Queries
+
+### Maior crescimento
+#### Justificativa
+ - Operadoras sem dados em múltiplos trimestres são excluídas, evitando distorções.
+
+### Despesas acima da média geral 
+#### Justificativa
+ - A abordagem com CTEs prioriza legibilidade e manutenção. Alternativas com subqueries correlacionadas foram evitadas por reduzir clareza sem ganho relevante de performance no volume esperado. 

@@ -25,12 +25,12 @@ CREATE TABLE operadoras (
 CREATE INDEX idx_operadoras_uf ON operadoras(uf);
 CREATE INDEX idx_operadoras_modalidade ON operadoras(modalidade);
 
-COPY operadoras(
+\copy operadoras(
     registro_operadora, cnpj, razao_social, nome_fantasia, modalidade, logradouro, numero, complemento, 
     bairro, cidade, uf, cep, ddd, telefone, fax, endereco_eletronico, 
     representante, cargo_representante, regiao_de_comercializacao, data_registro_ans
 )
-FROM '/test-03-database/data/operadoras_ativas.csv'
+FROM 'data/operadoras_ativas.csv'
 DELIMITER ';'
 CSV HEADER
 ENCODING 'UTF8';
@@ -49,8 +49,8 @@ CREATE INDEX idx_despesas_cnpj ON despesas_consolidadas(cnpj);
 CREATE INDEX idx_despesas_trimestre ON despesas_consolidadas(trimestre);
 CREATE INDEX idx_despesas_ano ON despesas_consolidadas(ano);
 
-COPY despesas_consolidadas(cnpj, razao_social, trimestre, ano, valor_despesas)
-FROM '/test-03-database/data/consolidado_despesas.csv'
+\copy despesas_consolidadas(cnpj, razao_social, trimestre, ano, valor_despesas)
+FROM 'data/consolidado_despesas.csv'
 DELIMITER ';'
 CSV HEADER
 ENCODING 'UTF8';
@@ -69,8 +69,8 @@ CREATE TABLE despesas_agregadas (
 CREATE INDEX idx_agg_razao_uf ON despesas_agregadas(razao_social, uf);
 CREATE INDEX idx_agg_total ON despesas_agregadas(total_despesas DESC);
 
-COPY despesas_agregadas(cnpj, razao_social, uf, total_despesas, media_trimestral, desvio_padrao)
-FROM '/test-03-database/data/despesas_agregadas.csv'
+\copy despesas_agregadas(cnpj, razao_social, uf, total_despesas, media_trimestral, desvio_padrao)
+FROM 'data/despesas_agregadas.csv'
 DELIMITER ';'
 CSV HEADER
 ENCODING 'UTF8';
