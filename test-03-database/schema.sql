@@ -25,27 +25,52 @@ CREATE TABLE operadoras (
 CREATE INDEX idx_operadoras_uf ON operadoras(uf);
 CREATE INDEX idx_operadoras_modalidade ON operadoras(modalidade);
 
-CREATE TABLE consolidado_despesas (
+COPY operadoras(
+    registro_operadora, cnpj, razao_social, nome_fantasia, modalidade, logradouro, numero, complemento, 
+    bairro, cidade, uf, cep, ddd, telefone, fax, endereco_eletronico, 
+    representante, cargo_representante, regiao_de_comercializacao, data_registro_ans
+)
+FROM '/test-03-database/data/operadoras_ativas.csv'
+DELIMITER ';'
+CSV HEADER
+ENCODING 'UTF8';
+
+CREATE TABLE despesas_consolidadas (
     id SERIAL PRIMARY KEY,
-    cnpj CHAR(14) NOT NULL REFERENCES operadoras(cnpj),
-    trimestre INT NOT NULL,
-    ano INT NOT NULL,
-    valor_despesas DECIMAL(20,2) NOT NULL
+    cnpj CHAR(14) REFERENCES operadoras(cnpj),
+    razao_social VARCHAR(255),
+    trimestre SMALLINT,
+    ano INT,
+    valor_despesas DECIMAL(20,2)
 );
 
--- Índices para análises rápidas
-CREATE INDEX idx_despesas_cnpj ON despesas(cnpj);
-CREATE INDEX idx_despesas_trimestre ON despesas(trimestre);
-CREATE INDEX idx_despesas_ano ON despesas(ano);
+-- Índices úteis
+CREATE INDEX idx_despesas_cnpj ON despesas_consolidadas(cnpj);
+CREATE INDEX idx_despesas_trimestre ON despesas_consolidadas(trimestre);
+CREATE INDEX idx_despesas_ano ON despesas_consolidadas(ano);
+
+COPY despesas_consolidadas(cnpj, razao_social, trimestre, ano, valor_despesas)
+FROM '/test-03-database/data/consolidado_despesas.csv'
+DELIMITER ';'
+CSV HEADER
+ENCODING 'UTF8';
 
 CREATE TABLE despesas_agregadas (
     id SERIAL PRIMARY KEY,
     cnpj CHAR(14) REFERENCES operadoras(cnpj),
-    total_despesas DECIMAL(20,2) NOT NULL,
+    razao_social VARCHAR(255),
+    uf CHAR(2),
+    total_despesas DECIMAL(20,2),
     media_trimestral DECIMAL(20,2),
     desvio_padrao DECIMAL(20,2)
 );
 
--- Índices para consultas analíticas
+-- Índices úteis
 CREATE INDEX idx_agg_razao_uf ON despesas_agregadas(razao_social, uf);
 CREATE INDEX idx_agg_total ON despesas_agregadas(total_despesas DESC);
+
+COPY despesas_agregadas(cnpj, razao_social, uf, total_despesas, media_trimestral, desvio_padrao)
+FROM '/test-03-database/data/despesas_agregadas.csv'
+DELIMITER ';'
+CSV HEADER
+ENCODING 'UTF8';
