@@ -1,6 +1,6 @@
 # Teste 03 – Banco de Dados e Análise
 
-Para esta etapa, utiliza-se os CSVs gerados anteriormente: consolidado_despesas.csv, operadoras_ativas.csv e despesas_agregadas.csv(traga-os do projeto 2 para a pasta data aqui(crie uma)).
+Para esta etapa, utiliza-se os CSVs gerados anteriormente: consolidado_validado.csv, operadoras_ativas.csv e despesas_agregadas.csv(traga-os do projeto 2 para a pasta data aqui(crie uma)).
 Sendo que esse projeto possui schema.sql e a pasta queries onde se encontram os comandos SQL.
 
 ## Tabelas
