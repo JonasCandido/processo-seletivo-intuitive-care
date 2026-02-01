@@ -7,7 +7,7 @@ Este projeto implementa o backend , consistindo em uma API REST desenvolvida em 
 Usei docker/docker compose para facilitar para os avaliadores executar o software.
 Configurei o docker-compose.yml para rodar os testes(me refiro aos testes em Python feitos na pasta backend/tests).
 
-Em um terminal(usei Linux para o exemplo) na pasta raiz de test-02-data-transform, execute:
+Em um terminal(usei Linux para o exemplo) na pasta raiz de test-04-api-web-interface, execute:
 ```
 docker compose up --build
 ```
