@@ -12,6 +12,9 @@ Em um terminal(usei Linux para o exemplo) na pasta raiz de test-02-data-transfor
 docker compose up --build
 ```
 
+API: http://localhost:8000
+Documentação: http://localhost:8000/docs
+
 ## Observações do desenvolvimento e trade-offs
 
 4 – API e Interface Web
