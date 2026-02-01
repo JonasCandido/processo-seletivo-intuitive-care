@@ -15,6 +15,8 @@ Foram criadas três tabelas normalizadas no PostgreSQL:
  - PK em operadoras(cnpj) e id nas tabelas de despesas.
  - FKs das tabelas de despesas referenciam operadoras(cnpj).
  - Índices adicionais em razao_social, uf, ano, trimestre e total_despesas para otimizar consultas analíticas.
+ - Operadoras sem registros correspondentes em despesas_consolidadas foram removidas, pois não agregam valor às análises propostas neste projeto.
+   (Pediram pra usar o consolidado_despesas.csv do teste 1.3 no pdf e acabei usando o consolidado_validado por causa da compatibildade de dados no PostgreSQL)
 
 ## Trade-offs técnicos:
  - Normalização: escolhida para evitar duplicação de dados, reduzir inconsistências e facilitar atualizações. JOINs simples não impactam performance dado o volume esperado (~2–3 mil operadoras).
@@ -52,9 +54,3 @@ Valores inválidos são tratados antes do COPY ou aceitos como NULL quando permi
 ### Despesas acima da média geral 
 #### Justificativa
  - A abordagem com CTEs prioriza legibilidade e manutenção. Alternativas com subqueries correlacionadas foram evitadas por reduzir clareza sem ganho relevante de performance no volume esperado. 
-
-## Iria aplicar com mais tempo: recursos de nuvem (GCP)
-
-Os arquivos CSV gerados na etapa anterior são reutilizados nesta fase como fonte de ingestão do banco de dados.
-Um container executado em Cloud Run é responsável por baixar os arquivos do bucket e executar os scripts SQL de criação de tabelas, carga (\copy) e análises no Cloud SQL (PostgreSQL).
-Essa abordagem manteria os mesmos scripts SQL usados localmente, garantindo reprodutibilidade entre ambientes.

@@ -1,6 +1,6 @@
 CREATE TABLE operadoras (
     registro_operadora INT UNIQUE NOT NULL,
-    cnpj CHAR(14) PRIMARY KEY,
+    cnpj CHAR(14) PRIMARY KEY UNIQUE NOT NUll,
     razao_social VARCHAR(255) NOT NULL,
     nome_fantasia VARCHAR(255),
     modalidade VARCHAR(100),
@@ -23,7 +23,6 @@ CREATE TABLE operadoras (
 
 CREATE INDEX idx_operadoras_uf ON operadoras(uf);
 CREATE INDEX idx_operadoras_modalidade ON operadoras(modalidade);
-
 
 CREATE TABLE despesas_consolidadas (
     id SERIAL PRIMARY KEY,
