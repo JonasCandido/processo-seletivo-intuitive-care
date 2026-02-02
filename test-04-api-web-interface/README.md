@@ -73,14 +73,14 @@ Essa abordagem reduz carga no banco e simplifica a lógica da rota.
  - Evita sobrecarregar o cliente com todos os dados; UX mais rápida mesmo com muitas operadoras.
 
 
-4.3.2 - Escolha: Composables (Vue 3)
+4.3.2 - Escolha: Props/Events simples
 ## Justificativa: 
- - Permite isolar e reutilizar lógica, adequada para o tamanho da aplicação.
+ - No momento, o componente mantém o estado localmente, uma abordagem simples (Props/Events implícitos) que funciona para esta escala de app.
 
 4.3.3 - Escolha: Paginação implementada via backend, carregando apenas a página solicitada
 
 ## Justificativa: 
- - renderização leve e responsiva mesmo para centenas ou milhares de operadoras; evita travar o DOM.
+ - Como cada view consome seus próprios dados e não há compartilhamento extensivo, manter a lógica no componente foi suficiente.
 
 4.3.4 - Escolhas:
  - Loader visível durante carregamento
