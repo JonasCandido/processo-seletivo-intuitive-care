@@ -2,21 +2,20 @@
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import api from "../api/client";
+import { obterOperadora, listarDespesasOperadora } from "../api/operadoras";
 
 const route = useRoute();
 const cnpj = route.params.cnpj;
 
 const operadora = ref(null);
 const despesas = ref([]);
-
 const loadingOperadora = ref(true);
 const loadingDespesas = ref(true);
 const erro = ref(null);
 
 async function carregarOperadora() {
   try {
-    const res = await api.get(`/api/operadoras/${cnpj}`);
-    operadora.value = res.data;
+    operadora.value = await obterOperadora(cnpj);
   } catch (e) {
     erro.value = "Operadora não encontrada.";
   } finally {
@@ -26,8 +25,7 @@ async function carregarOperadora() {
 
 async function carregarDespesas() {
   try {
-    const res = await api.get(`/api/operadoras/${cnpj}/despesas`);
-    despesas.value = res.data;
+    despesas.value = await listarDespesasOperadora(cnpj);
   } catch (e) {
     despesas.value = [];
   } finally {
