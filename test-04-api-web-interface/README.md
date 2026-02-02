@@ -95,11 +95,13 @@ Essa abordagem reduz carga no banco e simplifica a lógica da rota.
 A documentação da API está disponível no backend: http://localhost:8000/docs
 Inclui todos os endpoints com exemplos de requisição e resposta, por isso não achei necessário inserir Postman.
 
-## Iria aplicar com mais tempo: recursos de nuvem (GCP) e testes para o EstatisticasView.vue(estava dando erros devido a forma que a view estava renderizando o Chart e não tive tempo para consertá-lo)
-
+## Iria aplicar com mais tempo: recursos de nuvem (GCP)
 Os arquivos CSV gerados nas etapas anteriores seriam reutilizados como fonte de ingestão do banco de dados.
 
 Em um cenário em nuvem, o banco de dados seria hospedado no Cloud SQL (PostgreSQL).  
 A API e Frontend (test-04) seria executada como um container independente no Cloud Run, conectando-se ao Cloud SQL.
 
 Os mesmos scripts SQL utilizados localmente (schema.sql, load.sql, e fk_after.sql) poderiam ser executados em um ambiente de inicialização ou job específico.
+
+###  Testes para o EstatisticasView.vue
+Estava dando erros devido a forma que a view estava renderizando o Chart e não tive tempo para consertá-los.
