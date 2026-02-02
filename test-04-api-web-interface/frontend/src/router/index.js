@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import OperadorasView from "../views/OperadorasView.vue";
 import OperadoraDetalheView from "../views/OperadoraDetalheView.vue";
+import EstatisticasView from "../views/EstatisticasView.vue";
 
 const routes = [
   {
@@ -19,6 +20,7 @@ const routes = [
     component: OperadoraDetalheView,
     props: true,
   },
+  { path: "/estatisticas", component: EstatisticasView },
 ];
 
 const router = createRouter({

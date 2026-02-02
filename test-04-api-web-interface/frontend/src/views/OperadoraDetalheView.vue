@@ -29,7 +29,6 @@ async function carregarDespesas() {
     const res = await api.get(`/api/operadoras/${cnpj}/despesas`);
     despesas.value = res.data;
   } catch (e) {
-    // 404 aqui NÃO quebra a tela
     despesas.value = [];
   } finally {
     loadingDespesas.value = false;
@@ -44,10 +43,7 @@ onMounted(() => {
 
 <template>
   <div class="container">
-    <!-- ERRO -->
     <p v-if="erro" class="error">{{ erro }}</p>
-
-    <!-- LOADING -->
     <p v-else-if="loadingOperadora">Carregando operadora...</p>
 
     <!-- DADOS DA OPERADORA -->

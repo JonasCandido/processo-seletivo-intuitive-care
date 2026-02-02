@@ -6,6 +6,7 @@
 
         <nav>
           <router-link to="/operadoras">Operadoras</router-link>
+          <router-link to="/estatisticas">Estatísticas</router-link>
         </nav>
       </div>
     </header>

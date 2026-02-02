@@ -70,6 +70,6 @@ Essa abordagem reduz carga no banco e simplifica a lógica da rota.
 Os arquivos CSV gerados nas etapas anteriores seriam reutilizados como fonte de ingestão do banco de dados.
 
 Em um cenário em nuvem, o banco de dados seria hospedado no Cloud SQL (PostgreSQL).  
-A API (test-04) seria executada como um container independente no Cloud Run, conectando-se ao Cloud SQL.
+A API e Frontend (test-04) seria executada como um container independente no Cloud Run, conectando-se ao Cloud SQL.
 
 Os mesmos scripts SQL utilizados localmente (schema.sql, load.sql, e fk_after.sql) poderiam ser executados em um ambiente de inicialização ou job específico.
