@@ -82,10 +82,4 @@ def listar_despesas_operadora(
         .all()
     )
 
-    if not despesas:
-        raise HTTPException(
-            status_code=404,
-            detail="Nenhuma despesa encontrada para este CNPJ"
-        )
-
     return despesas

@@ -54,7 +54,12 @@ onMounted(carregar);
         </thead>
 
         <tbody>
-          <tr v-for="op in operadoras" :key="op.cnpj">
+          <tr
+            v-for="op in operadoras"
+            :key="op.cnpj"
+            @click="$router.push(`/operadoras/${op.cnpj}`)"
+            class="clickable"
+          >
             <td>{{ op.cnpj }}</td>
             <td class="bold">{{ op.razao_social }}</td>
             <td>{{ op.nome_fantasia || "-" }}</td>
@@ -139,12 +144,15 @@ h1 {
   color: #334155;
   border-bottom: 2px solid #e2e8f0;
 }
-
 .table tbody td {
   padding: 14px;
   font-size: 0.9rem;
   border-bottom: 1px solid #e5e7eb;
   white-space: nowrap;
+}
+
+.clickable {
+  cursor: pointer;
 }
 
 .table tbody tr:nth-child(even) {
