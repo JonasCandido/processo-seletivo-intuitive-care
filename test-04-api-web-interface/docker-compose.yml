@@ -25,5 +25,16 @@ services:
       DATABASE_URL: postgresql://postgres:postgres@db:5432/operadoras
     command: pytest
 
+  frontend:
+    build: ./frontend
+    container_name: frontend_operadoras
+    depends_on:
+      - backend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
 volumes:
   db_data:
