@@ -20,7 +20,7 @@ Frontend: http://localhost:5173/
 
 4 – API e Interface Web
 
-4.2
+4.2 - API
 
 4.2.1 - Escolha: FastAPI
 
@@ -65,7 +65,7 @@ Essa abordagem reduz carga no banco e simplifica a lógica da rota.
  - Evita cálculos adicionais no cliente
  - Contrato mais explícito e autoexplicativo
 
-4.3 – Interface Vue.js
+4.3 – Interface
 
 4.3.1 – Escolha: Busca no servidor
 
