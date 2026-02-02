@@ -1,19 +1,29 @@
-import { createRouter, createWebHistory } from "vue-router"
+import { createRouter, createWebHistory } from "vue-router";
+
+import OperadorasView from "../views/OperadorasView.vue";
+import OperadoraDetalheView from "../views/OperadoraDetalheView.vue";
 
 const routes = [
   {
     path: "/",
+    redirect: "/operadoras",
+  },
+  {
+    path: "/operadoras",
     name: "operadoras",
-    component: () => import("../views/OperadorasView.vue")
+    component: OperadorasView,
   },
   {
     path: "/operadoras/:cnpj",
     name: "operadora-detalhe",
-    component: () => import("../views/OperadoraDetalheView.vue")
-  }
-]
+    component: OperadoraDetalheView,
+    props: true,
+  },
+];
 
-export const router = createRouter({
+const router = createRouter({
   history: createWebHistory(),
-  routes
-})
+  routes,
+});
+
+export default router;
