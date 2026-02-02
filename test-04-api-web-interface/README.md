@@ -65,7 +65,37 @@ Essa abordagem reduz carga no banco e simplifica a lógica da rota.
  - Evita cálculos adicionais no cliente
  - Contrato mais explícito e autoexplicativo
 
-## Iria aplicar com mais tempo: recursos de nuvem (GCP)
+4.3 – Interface Vue.js
+
+4.3.1 – Escolha: Busca no servidor
+
+## Justificativa: 
+ - Evita sobrecarregar o cliente com todos os dados; UX mais rápida mesmo com muitas operadoras.
+
+
+4.3.2 - Escolha: Composables (Vue 3)
+## Justificativa: 
+ - Permite isolar e reutilizar lógica, adequada para o tamanho da aplicação.
+
+4.3.3 - Escolha: Paginação implementada via backend, carregando apenas a página solicitada
+
+## Justificativa: 
+ - renderização leve e responsiva mesmo para centenas ou milhares de operadoras; evita travar o DOM.
+
+4.3.4 - Escolhas:
+ - Loader visível durante carregamento
+ - Mensagens de erro específicas da API
+ - Mensagens claras quando não há dados
+
+## Justificativa: 
+ - melhora UX e facilita debug
+
+
+4.4 – Documentação
+A documentação da API está disponível no backend: http://localhost:8000/docs
+Inclui todos os endpoints com exemplos de requisição e resposta, por isso não achei necessário inserir Postman.
+
+## Iria aplicar com mais tempo: recursos de nuvem (GCP) e testes para o EstatisticasView.vue(estava dando erros devido a forma que a view estava renderizando o Chart e não tive tempo para consertá-lo)
 
 Os arquivos CSV gerados nas etapas anteriores seriam reutilizados como fonte de ingestão do banco de dados.
 
