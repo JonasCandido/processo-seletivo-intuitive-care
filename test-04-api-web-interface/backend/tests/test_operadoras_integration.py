@@ -8,7 +8,6 @@ def test_listar_operadoras_status_code():
     response = client.get("/api/operadoras?page=1&limit=5")
     assert response.status_code == 200
 
-
 def test_listar_operadoras_estrutura_resposta():
     response = client.get("/api/operadoras?page=1&limit=5")
     body = response.json()
@@ -21,6 +20,25 @@ def test_listar_operadoras_estrutura_resposta():
     assert isinstance(body["data"], list)
     assert body["page"] == 1
     assert body["limit"] == 5
+
+def test_listar_operadoras_com_pesquisa():
+    search = "SAU"  
+
+    response = client.get(
+        f"/api/operadoras?page=1&limit=10&search={search}"
+    )
+
+    assert response.status_code == 200
+
+    body = response.json()
+    assert "data" in body
+    assert isinstance(body["data"], list)
+
+    for operadora in body["data"]:
+        cnpj = operadora.get("cnpj", "").upper()
+        razao = operadora.get("razao_social", "").upper()
+
+        assert search in cnpj or search in razao
 
 
 def test_listar_operadoras_campos_minimos():

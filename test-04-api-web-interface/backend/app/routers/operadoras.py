@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, Query, HTTPException
 from sqlalchemy.orm import Session
+from sqlalchemy import or_
 from typing import List
 
 from ..database import get_db
@@ -12,13 +13,25 @@ router = APIRouter(prefix="/api/operadoras", tags=["Operadoras"])
 def listar_operadoras(
     page: int = Query(1, ge=1),
     limit: int = Query(10, le=100),
+    search: str | None = Query(None),
     db: Session = Depends(get_db)
 ):
     offset = (page - 1) * limit
 
-    total = db.query(models.Operadora).count()
+    query = db.query(models.Operadora)
+
+    if search:
+        query = query.filter(
+            or_(
+                models.Operadora.cnpj.ilike(f"%{search}%"),
+                models.Operadora.razao_social.ilike(f"%{search}%")
+            )
+        )
+
+    total = query.count()
+
     operadoras = (
-        db.query(models.Operadora)
+        query
         .order_by(models.Operadora.razao_social)
         .offset(offset)
         .limit(limit)

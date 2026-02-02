@@ -36,5 +36,12 @@ services:
       - ./frontend:/app
       - /app/node_modules
 
+  frontend-test:
+    build: ./frontend
+    container_name: frontend_tests
+    command: npm run test
+    depends_on:
+      - backend
+
 volumes:
   db_data:

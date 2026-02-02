@@ -13,7 +13,8 @@ docker compose up --build
 ```
 
 API: http://localhost:8000<br>
-Documentação: http://localhost:8000/docs
+Documentação: http://localhost:8000/docs<br>
+Frontend: http://localhost:5173/
 
 ## Observações do desenvolvimento e trade-offs
 
