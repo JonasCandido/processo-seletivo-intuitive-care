@@ -84,7 +84,7 @@ Essa abordagem reduz carga no banco e simplifica a lógica da rota.
 
 4.3.4 - Escolhas:
  - Loader visível durante carregamento
- - Mensagens de erro específicas da API
+ - Mensagens de erro específicas
  - Mensagens claras quando não há dados
 
 ## Justificativa: 
